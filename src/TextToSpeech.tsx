@@ -4,7 +4,7 @@ import SpeechWrapper from "./type/SpeechWapper";
 
 function TextToSpeech() {
   const [text, setText] = useState("");
-  const [voice, setVoice] = useState(null);
+  const [voice, setVoice] = useState<SpeechSynthesisVoice | null>(null);
 
   const {
     speak,
@@ -41,7 +41,7 @@ function TextToSpeech() {
         <div className="mt-6 space-y-4">
           <textarea
             value={text}
-            onChange={(e) => setTexts(e.target.value)}
+            onChange={(e) => setText(e.target.value)}
             onMouseEnter={() => handleSpeakHover("Text field")}
             onMouseLeave={handleStopSpeak}
             placeholder="Type something to speak..."
@@ -50,7 +50,7 @@ function TextToSpeech() {
 
           <div className="flex flex-wrap gap-3">
             <button
-              onClick={() => speak({ text, voice })}
+              onClick={() => speak({text,voice: voice || undefined})}
               onMouseEnter={() => handleSpeakHover("Click to Speak")}
               onMouseLeave={handleStopSpeak}
               className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"

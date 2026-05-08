@@ -11,7 +11,7 @@ export default function SpeechDemo() {
 
   const { listen, listening, stop } = useSpeechRecognition({
     onResult: (result) => {
-      setText(result);
+      setText(result?.[0]?.transcript || "");
     },
   });
 
@@ -48,7 +48,6 @@ export default function SpeechDemo() {
         <button
           onClick={() =>
             listen({
-              continuous: true,
               lang: "en-US",
             })
           }
