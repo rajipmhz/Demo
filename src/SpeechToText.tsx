@@ -10,11 +10,10 @@ export default function SpeechDemo() {
   const [text, setText] = useState("");
 
   const { listen, listening, stop } = useSpeechRecognition({
-    onResult: (result) => {
-      setText(result?.[0]?.transcript || "");
-    },
-  });
-
+  onResult: (result:any) => {
+    setText(result);
+  },
+});
   const { speak, cancel } = useSpeechSynthesis();
 
   const handleSpeakHover = (msg: string) => {
