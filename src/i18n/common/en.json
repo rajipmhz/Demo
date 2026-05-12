@@ -1,0 +1,13 @@
+{
+    "forms": {
+    "office": "Office",
+    "remarks": "Remarks",
+    "userName": "Username",
+    "name": "Name (EN)",
+    "nameNp": "Name (NP)",
+    "address": "Address",
+    "contactNumber": "Contact No.",
+    "email": "Email",
+    "roles": "Roles"
+  }
+}

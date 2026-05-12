@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState} from "react";
 import SpeechField from "./type/SpeechField";
 import SpeechWrapper from "./type/SpeechWapper";
 import { useSpeechSynthesis } from "react-speech-kit";
+import { getTextByLanguage } from "./i18n/i18n";
+import { useTranslation } from "react-i18next";
 
 function Form() {
+    const {t}=useTranslation();
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -32,7 +35,7 @@ function Form() {
             </SpeechWrapper>
 
             <form className="mt-6 space-y-5" onSubmit={handleSubmit}>
-                <SpeechField label="Full Name" speechText="Enter your full name">
+                <SpeechField label={t("common:forms.name")} speechText="Enter your full name">
                     <input
                         type="text"
                         name="name"
@@ -43,7 +46,7 @@ function Form() {
                     />
                 </SpeechField>
 
-                <SpeechField label="Email" speechText="Enter your email address">
+                <SpeechField label={getTextByLanguage("Email", "पुष्टीकरण")} speechText="Enter your email address">
                     <input
                         type="email"
                         name="email"

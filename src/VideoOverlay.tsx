@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import SpeechWrapper from "./type/SpeechWapper";
 import { useSpeechSynthesis } from "react-speech-kit";
+import { getTextByLanguage } from "./i18n/i18n";
 
 const subtitles = [
   { start: 1, end: 4, text: "Welcome to our website" },
@@ -50,7 +51,7 @@ const { speak, cancel, voices } = useSpeechSynthesis();
   return (
     <div className="flex flex-col items-center justify-center p-6">
       <SpeechWrapper>
-        <h2 className="text-2xl font-semibold">Video</h2>
+        <h2 className="text-2xl font-semibold">{getTextByLanguage("Video","भिडियो")}</h2>
       </SpeechWrapper>
 
       <div className="relative w-full max-w-3xl mt-6 rounded-xl overflow-hidden shadow-lg">

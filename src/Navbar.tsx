@@ -1,9 +1,18 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import SpeechWrapper from "./type/SpeechWapper";
+import { LanguageSwitcher } from "./components/core/LanguageSwitcher.tsx/LanguageSwitcher";
+import { useTranslation } from "react-i18next";
+import { ToggleContext } from "./provider/ToggleLanguage";
+import { getTextByLanguage } from "./i18n/i18n";
+import { ModeToggle } from "./components/core/ThemeProvider/ThemeProvider";
 
 const Navbar = () => {
+  const { i18n } = useTranslation();
+  const { toggleLanguage } = useContext(ToggleContext);
+
   const { speak, cancel } = useSpeechSynthesis();
+
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSpeak = (text: string) => {
@@ -29,12 +38,13 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="bg-black text-white px-6 py-3 flex gap-6 items-center shadow-md">
+      <nav className="bg-white text-black dark:bg-black dark:text-white px-6 py-3 flex gap-6 items-center shadow-md transition-colors duration-300">
+        
         {links.map((link, index) => (
           <a
             key={index}
             href={link.href}
-            className="text-lg hover:text-blue-400 focus:text-blue-400 transition-colors outline-none"
+            className="text-lg hover:text-blue-500 dark:hover:text-blue-400 focus:text-blue-500 transition-colors outline-none"
             onMouseEnter={() => handleSpeak(link.speak)}
             onMouseLeave={handleCancel}
             onFocus={() => handleSpeak(link.speak)}
@@ -43,12 +53,24 @@ const Navbar = () => {
             {link.label}
           </a>
         ))}
+
+        <div className="ml-auto flex items-center gap-4">
+          <LanguageSwitcher
+            i18n={i18n}
+            toggleLanguage={toggleLanguage}
+            getTextByLanguage={getTextByLanguage}
+          />
+
+          <ModeToggle />
+        </div>
       </nav>
 
       <SpeechWrapper>
-        <p className="text-gray-700 mt-4 text-2xl text-center px-4">
-          Demo website for the practice of react-speech-kit and react-speech-recognition.
+        <p className="text-gray-700 dark:text-gray-300 mt-4 text-2xl text-center px-4 transition-colors duration-300">
+          {/* Demo website for react-speech-kit */}
         </p>
+
+        <p></p>
       </SpeechWrapper>
     </div>
   );
