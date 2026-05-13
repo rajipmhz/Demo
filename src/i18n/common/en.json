@@ -1,13 +1,12 @@
 {
-    "forms": {
-    "office": "Office",
-    "remarks": "Remarks",
-    "userName": "Username",
-    "name": "Name (EN)",
-    "nameNp": "Name (NP)",
-    "address": "Address",
-    "contactNumber": "Contact No.",
-    "email": "Email",
-    "roles": "Roles"
-  }
+
+    "dashboard": "Dashboard",
+    "speech": "Speech",
+    "textSpeech": "Text To Speech",
+    "form": "Form",
+    "images": "Images",
+    "video": "Video",
+
+    "enableVoice": "Enable Voice",
+    "disableVoice": "Disable Voice"
 }

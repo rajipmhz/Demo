@@ -1,5 +1,5 @@
 import { useSpeechSynthesis } from "react-speech-kit";
-import SpeechWrapper from "./type/SpeechWapper";
+import SpeechWrapper from "../type/SpeechWapper";
 
 export default function ImageWithOverlay() {
   const { speak, cancel, voices } = useSpeechSynthesis();

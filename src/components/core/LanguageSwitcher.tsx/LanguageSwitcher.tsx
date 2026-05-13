@@ -27,7 +27,7 @@ export function LanguageSwitcher({ i18n, toggleLanguage, getTextByLanguage }: La
         </button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align="end" className="w-[160px] bg-white p-0">
+      <DropdownMenuContent align="end" className="w-[160px] bg-white p-0 dark:bg-black">
         {/* Header */}
         <div className="flex items-center gap-1 border-b p-1">
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-oliveGreen">

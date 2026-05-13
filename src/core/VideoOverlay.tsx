@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import SpeechWrapper from "./type/SpeechWapper";
+import SpeechWrapper from "../type/SpeechWapper";
 import { useSpeechSynthesis } from "react-speech-kit";
-import { getTextByLanguage } from "./i18n/i18n";
+import { getTextByLanguage } from "../i18n/i18n";
 
 const subtitles = [
   { start: 1, end: 4, text: "Welcome to our website" },

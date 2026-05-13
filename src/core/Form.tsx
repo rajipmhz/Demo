@@ -1,8 +1,8 @@
 import { useState} from "react";
-import SpeechField from "./type/SpeechField";
-import SpeechWrapper from "./type/SpeechWapper";
+import SpeechField from "../type/SpeechField";
+import SpeechWrapper from "../type/SpeechWapper";
 import { useSpeechSynthesis } from "react-speech-kit";
-import { getTextByLanguage } from "./i18n/i18n";
+import { getTextByLanguage } from "../i18n/i18n";
 import { useTranslation } from "react-i18next";
 
 function Form() {

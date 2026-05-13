@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
-import SpeechWrapper from "./type/SpeechWapper";
+import SpeechWrapper from "../type/SpeechWapper";
 
 function TextToSpeech() {
   const [text, setText] = useState("");

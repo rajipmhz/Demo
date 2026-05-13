@@ -1,6 +1,6 @@
-
 import { useRef, type ReactNode } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
+import { useSpeech } from "../provider/SpeechProvider";
 
 type SpeechFieldProps = {
   label: string;
@@ -12,41 +12,43 @@ function SpeechField({
   label,
   speechText,
   children,
-}:SpeechFieldProps) {
+}: SpeechFieldProps) {
   const { speak, cancel, voices } = useSpeechSynthesis();
- const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { speechEnabled } = useSpeech();
 
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleSpeak = () => {
-        if (timerRef.current) {
+    if (!speechEnabled) return;
+
+    if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
 
     timerRef.current = setTimeout(() => {
       cancel();
-   speak({
-      text: speechText || label,
-      voice: voices?.[0],
-      rate: 1,
-      pitch: 1,
-    });
+
+      const voice =
+        voices.find((v) => v.lang.includes("ne")) ||
+        voices.find((v) => v.lang === "hi-IN") ||
+        voices[0];
+
+      speak({
+        text: speechText || label,
+        voice,
+        rate: 1,
+        pitch: 1,
+      });
     }, 200);
-   
   };
 
   return (
     <div
       onMouseEnter={handleSpeak}
       onMouseLeave={cancel}
-      style={{ marginBottom: "20px" }}
+      className="space-y-2"
     >
-      <label
-        style={{
-          display: "block",
-          marginBottom: "6px",
-          fontWeight: "bold",
-        }}
-      >
+      <label className="font-semibold block">
         {label}
       </label>
 
