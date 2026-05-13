@@ -14,7 +14,7 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const { toggleLanguage } = useContext(ToggleContext);
 
-  const { speak, cancel } = useSpeechSynthesis();
+  const {  cancel } = useSpeechSynthesis();
   const { speechEnabled, toggleSpeech } = useSpeech();
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
